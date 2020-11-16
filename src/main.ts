@@ -34,7 +34,7 @@ async function notifyStarted({
       '@type': 'Notification',
       '@context': 'http://schema.org/extensions',
       title: `${context.payload.repository?.full_name} workflow STARTED`,
-      body: `Workflow ${context.workflow} #${context.runNumber} STARTED by ${name} on ${context.payload.repository?.full_name} ${env}`,
+      body: `Workflow ${context.workflow} #${context.runNumber} STARTED for ${env}`,
       url: wr.data.html_url
     }
     const sendResult = await webpush.sendNotification(
@@ -82,8 +82,7 @@ async function notifyFinished({
       '@type': 'Notification',
       '@context': 'http://schema.org/extensions',
       title: `${context.payload.repository?.full_name} workflow ${conclusion}`,
-      body: `Workflow ${context.workflow} #${context.runNumber} ${conclusion} on ${context.payload.repository?.full_name} ${env}
-${message} (${name}: ${email})`,
+      body: `Workflow ${context.workflow} #${context.runNumber} ${conclusion} for ${env} - ${message}`,
       url: status === 'success' ? publishUrl : wr.data.html_url
     }
 
