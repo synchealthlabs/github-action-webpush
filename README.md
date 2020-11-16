@@ -23,7 +23,10 @@ jobs:
       if: always() # to let this step always run even if previous step failed
       with:
         github-token: ${{ github.token }}
-        webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
+        subject: ${{ secrets.WEBPUSH_EMAIL }}
+        public-key: ${{ secrets.WEBPUSH_VAPID_PUBLIC_KEY }}
+        private-key: ${{ secrets.WEBPUSH_VAPID_PRIVATE_KEY }}
+        subscription: ${{ github.event.inputs.subscription }}
         type: finish
         status: ${{ job.status }}
         name: ${{ github.event.inputs.name }}
