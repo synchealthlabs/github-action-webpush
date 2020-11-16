@@ -1,0 +1,35 @@
+name: synchealthlabs/github-action-webpush
+description: Github Action Notifier for Web Push Notifications
+author: Sync Health Labs
+inputs:
+  github-token:
+    required: true
+    description: Github token
+  subscription:
+    required: true
+    description: Web-push subscription record, lzw compressed base62
+  type:
+    required: true
+    description: start or finish
+  status:
+    description: "Job status i.e. Success/Failure/Cancelled"
+    required: true
+  email:
+    description: Email of the person requesting the job
+    required: true
+  name:
+    description: Name of the person requesting the job
+    required: true
+  message:
+    description: Commit message
+    required: true
+  env:
+    description: Environment staging or production
+    required: true
+  publish-url: 
+    required: false
+    description: Publish url 
+
+runs:
+  using: node12
+  main: dist/main/index.js
