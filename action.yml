@@ -7,7 +7,16 @@ inputs:
     description: Github token
   subscription:
     required: true
-    description: Web-push subscription record, lzw compressed base62
+    description: Web-push subscription record in lzw compressed base62
+  private-key:
+    required: true
+    description: Vapid application private key in safe base64
+  public-key:
+    required: true
+    description: Vapid application public key in safe base64 
+  subject:
+    required: true
+    description: "Vapid subject i.e., mailto: address of server operator"
   type:
     required: true
     description: start or finish
