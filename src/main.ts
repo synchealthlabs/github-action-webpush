@@ -4,7 +4,7 @@ import * as github from '@actions/github'
 import { Context } from '@actions/github/lib/context'
 import * as webpush from 'web-push'
 // @ts-ignore
-import * as lzbase62 from 'lzbase62/lzbase62.min.js'
+import * as lzbase62 from 'lzbase62'
 
 async function notifyStarted({
   subscription,
