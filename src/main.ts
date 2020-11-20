@@ -100,11 +100,7 @@ async function notifyFinished({
 async function run(): Promise<void> {
   try {
     const subscriptionRaw = core.getInput('subscription')
-    if (
-      subscriptionRaw === undefined ||
-      subscriptionRaw === null ||
-      subscriptionRaw === ''
-    ) {
+    if (!subscriptionRaw || subscriptionRaw === 'undefined') {
       console.log('missing webpush subscription')
       return
     }

@@ -6,7 +6,7 @@ inputs:
     required: true
     description: Github token
   subscription:
-    required: true
+    required: false
     description: Web-push subscription record in lzw compressed base62
   private-key:
     required: true
