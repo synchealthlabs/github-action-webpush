@@ -99,9 +99,14 @@ async function notifyFinished({
 
 async function run(): Promise<void> {
   try {
+    const subscriptionRaw = core.getInput('subscription')
+    if (!subscriptionRaw) {
+      console.log('missing webpush subscription')
+      return
+    }
     const token = core.getInput('github-token')
     const subscription: webpush.PushSubscription = JSON.parse(
-      lzbase62.decompress(core.getInput('subscription'))
+      lzbase62.decompress(subscriptionRaw)
     )
     const privateKey = core.getInput('private-key')
     const publicKey = core.getInput('public-key')
