@@ -100,11 +100,14 @@ async function notifyFinished({
 async function run(): Promise<void> {
   try {
     const subscriptionRaw = core.getInput('subscription')
-    if (!subscriptionRaw) {
+    if (
+      subscriptionRaw === undefined ||
+      subscriptionRaw === null ||
+      subscriptionRaw === ''
+    ) {
       console.log('missing webpush subscription')
       return
     }
-    console.log(subscriptionRaw)
     const token = core.getInput('github-token')
     const subscription: webpush.PushSubscription = JSON.parse(
       lzbase62.decompress(subscriptionRaw)
